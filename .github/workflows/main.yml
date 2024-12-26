@@ -32,9 +32,3 @@ jobs:
 
       - name: Package Electron app
         run: npm run package
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: electron-app-${{ matrix.os }}
-          path: path/to/your/build/output
