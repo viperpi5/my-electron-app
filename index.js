@@ -1,4 +1,5 @@
-const { app, BrowserWindow } = require('electron')
+
+const { app, BrowserWindow, ipcMain } = require('electron/main')
 const path = require('node:path')
 
 const createWindow = () => {
@@ -15,4 +16,17 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   createWindow()
+  ipcMain.handle('ping', () => 'pong')
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow()
+      
+    }
+  })
+})
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
 })
