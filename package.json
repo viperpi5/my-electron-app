@@ -8,7 +8,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
-  "author": "",
+  "author": "viperpi5",
   "license": "ISC",
   "devDependencies": {
     "@electron-forge/cli": "^7.6.0",
