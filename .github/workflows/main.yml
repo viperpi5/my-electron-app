@@ -32,5 +32,39 @@ jobs:
 
       - name: Build Electron app
         run: npm run make
+
       - name: Package Electron app
         run: npm run package
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: electron-app-${{ matrix.os }}
+          path: path/to/artifact # Replace with the actual path to the artifact
+
+  collect-artifacts:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: electron-app-ubuntu-latest
+          path: ./artifacts/ubuntu
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: electron-app-macos-latest
+          path: ./artifacts/macos
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: electron-app-windows-latest
+          path: ./artifacts/windows
+
+      - name: Upload all artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: all-electron-apps
+          path: ./artifacts
