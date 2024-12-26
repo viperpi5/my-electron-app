@@ -48,23 +48,23 @@ jobs:
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: electron-app-ubuntu-latest
           path: ./artifacts/ubuntu
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: electron-app-macos-latest
           path: ./artifacts/macos
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: electron-app-windows-latest
           path: ./artifacts/windows
 
       - name: Upload all artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: all-electron-apps
           path: ./artifacts
