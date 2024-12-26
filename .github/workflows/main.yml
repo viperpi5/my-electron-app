@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v3 # Updated to v3
         with:
           name: electron-app-${{ matrix.os }}
-          path: path/to/artifact # Replace with the actual path to the artifact
+          path: ./artifacts # Replace with the actual path to the artifact
 
   collect-artifacts:
     needs: build
