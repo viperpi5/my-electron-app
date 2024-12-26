@@ -40,24 +40,24 @@ jobs:
         uses: actions/upload-artifact@v3 # Updated to v3
         with:
           name: electron-app-${{ matrix.os }}
-          path: ./artifacts # Replace with the actual path to the artifact
+          path: out # Replace with the actual path to the artifact
 
   collect-artifacts:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download artifacts
+      - name: Download artifacts (Ubuntu)
         uses: actions/download-artifact@v3 # Updated to v3
         with:
           name: electron-app-ubuntu-latest
           path: ./artifacts/ubuntu
-      - name: Download artifacts
+      - name: Download artifacts (macOS)
         uses: actions/download-artifact@v3 # Updated to v3
         with:
           name: electron-app-macos-latest
           path: ./artifacts/macos
-      - name: Download artifacts
+      - name: Download artifacts (Windows)
         uses: actions/download-artifact@v3 # Updated to v3
         with:
           name: electron-app-windows-latest
